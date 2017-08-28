@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language LANG="english" ID="0">
+  <!-- Hunt -->
+  <text key="COMPLETE">Complete</text>
+  <text key="PAUSE">Pause</text>
+  <text key="ADD_1">+1</text>
+  <text key="EDIT">Edit</text>
+  <text key="DELETE">Delete</text>
+  <text key="SURE_TO_DELETE">Do you want to delete this Hunt ?</text>
+  <text key="YES">Yes</text>
+  <text key="NO">No</text>
+  <text key="ACTION_IRREVERSIBLE">This action cannot be undone</text>
+  <text key="HUNT_TITLE">Good luck !</text>
+
+  <!-- Form Hunt -->
+  <text key="FORM_HUNT_TITLE">Let's start !</text>
+  <text key="CONFIRM">Confirm</text>
+  <text key="CANCEL">Cancel</text>
+  <text key="SHINY_CHARM">Shiny Charm</text>
+  <text key="SELECT_POKEMON">Select Pokemon</text>
+  <text key="ENTER_NAME">Enter name...</text>
+
+  <!-- List -->
+  <text key="TITLE_LIST">Shiny Counter</text>
+  <text key="ADD_LIST">Add</text>
+</Language>

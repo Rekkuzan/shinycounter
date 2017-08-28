@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language LANG="french" ID="1">
+  <!-- Hunt -->
+  <text key="COMPLETE">Terminer</text>
+  <text key="PAUSE">Pause</text>
+  <text key="ADD_1">+1</text>
+  <text key="EDIT">Éditer</text>
+  <text key="DELETE">Supprimer</text>
+  <text key="SURE_TO_DELETE">Êtes-vous sûr de vouloir supprimer cette chasse ?</text>
+  <text key="YES">Oui</text>
+  <text key="NO">Non</text>
+  <text key="ACTION_IRREVERSIBLE">Cette action est irréversible</text>
+  <text key="HUNT_TITLE">Bonne chance !</text>
+  <!-- form Hunt -->
+  <text key="FORM_HUNT_TITLE">C'est parti !</text>
+  <text key="CONFIRM">Valider</text>
+  <text key="CANCEL">Annuler</text>
+  <text key="SHINY_CHARM">Charme Chroma</text>
+  <text key="SELECT_POKEMON">Choisir un pokémon</text>
+  <text key="ENTER_NAME">Entrez un nom...</text>
+
+  <!-- List -->
+  <text key="TITLE_LIST">Shiny Counter</text>
+  <text key="ADD_LIST">Ajouter</text>
+</Language>
