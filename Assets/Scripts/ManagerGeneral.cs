@@ -32,4 +32,14 @@ public class ManagerGeneral : MonoBehaviour {
     {
         SceneManager.LoadScene("ListHunt");
     }
+
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
+    public void About()
+    {
+        SceneManager.LoadScene("About");
+    }
 }

@@ -67,7 +67,7 @@ public class GameData
     public List<HuntData> Hunts = new List<HuntData>();
     public int HuntActive = -1;
 
-    public LANG Lang = LANG.EN;
+    public LANG Lang = LANG.FR;
 
     public enum LANG
     {

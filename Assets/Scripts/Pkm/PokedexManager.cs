@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 public class PokedexManager : MonoBehaviour {
 
@@ -9,10 +10,56 @@ public class PokedexManager : MonoBehaviour {
 
     public TextAsset pokemons;
 
-    public Dictionary<int, Pokemon> FinalPokemons = new Dictionary<int, Pokemon>();
+    public List<Pokemon> FinalPokemons = new List<Pokemon>();
+    public Sprite DefaultSprite;
 
     public Texture2D texture;
     private Sprite[] sprites;
+
+    private Dictionary<int, int> SpecialForms = new Dictionary<int, int>
+    {
+        {19, 2 },
+        {20, 2 },
+        {26, 2 },
+        {27, 2 },
+        {28, 2 },
+        {37, 2 },
+        {38, 2 },
+        {50, 2 },
+        {51, 2 },
+        {52, 2 },
+        {53, 2 },
+        {74, 2 },
+        {75, 2 },
+        {76, 2 },
+        {88, 2 },
+        {89, 2 },
+        {103, 2 },
+        {105, 2 },
+        {412, 3 },
+        {413, 3 },
+        {421, 2 },
+        {422, 2 },
+        {423, 2 },
+        {492, 2 },
+        {521, 2 },
+        {550, 2 },
+        {555, 2 },
+        {592, 2 },
+        {593, 2 },
+        {641, 2 },
+        {642, 2 },
+        {645, 2 },
+        {646, 3 },
+        {647, 2 },
+        {648, 2 },
+        {668, 2 },
+        {678, 2 },
+        {718, 3 },
+        {720, 2 },
+        {745, 2 },
+        {746, 2 },
+    };
 
     public void Awake()
     {
@@ -31,6 +78,8 @@ public class PokedexManager : MonoBehaviour {
 
         string fs = pokemons.text;
         string[] fLines = Regex.Split(fs, "\n|\r|\r\n");
+        int indexSprite = 0;
+        int maxForm = 0;
 
         for (int i = 0; i < fLines.Length; i++)
         {
@@ -42,27 +91,38 @@ public class PokedexManager : MonoBehaviour {
                 Debug.LogError("INVALID LINE \"" + fLines[i] + "\"");
                 continue;
             }
-            Pokemon pkm = new Pokemon();
-            pkm.id = System.Int32.Parse(values[0]);
-            pkm.english = values[1];
-            pkm.french = values[2];
-            pkm.image = sprites[pkm.id - 1];
 
-            FinalPokemons[pkm.id] = pkm;
+            int pkmId = System.Int32.Parse(values[0]);
+
+            if (SpecialForms.ContainsKey(pkmId))
+                maxForm = SpecialForms[pkmId];
+            else
+                maxForm = 1;
+
+            Pokemon pkm = null;
+            for (int j = 0; j < maxForm; j++)
+            {
+                pkm = new Pokemon();
+                pkm.id = pkmId;
+                pkm.english = values[1];
+                pkm.french = values[2];
+
+                pkm.image = sprites[indexSprite];
+                indexSprite++;
+                FinalPokemons.Add(pkm);
+            }
         }
-
     }
 
     public List<Pokemon> Search(string match, int limit = 15)
     {
         List<Pokemon> result = new List<Pokemon>();
 
-        foreach (KeyValuePair<int, Pokemon> D in FinalPokemons)
+        foreach (Pokemon D in FinalPokemons)
         {
-            if (Regex.IsMatch(GetPokemon(D.Key), match, RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(GetPokemon(D.id), match, RegexOptions.IgnoreCase))
             {
-                result.Add(D.Value);
-                //Debug.Log("MATCH !");
+                result.Add(D);
             }
             if (result.Count >= limit)
                 break;
@@ -73,14 +133,16 @@ public class PokedexManager : MonoBehaviour {
 
     public string GetPokemon(int id)
     {
+        Pokemon d = FinalPokemons.Where(obj => obj.id == id).ToList()[0];
+
         if (PersistantData.instance.data.Lang == GameData.LANG.FR)
-            return FinalPokemons[id].french;
-        return FinalPokemons[id].english;
+            return d.french;
+        return d.english;
     }
 
     public Pokemon GetPokemonEntity(int id)
     {
-        return FinalPokemons[id];
+        return FinalPokemons.Where(obj => obj.id == id).ToList()[0];
     }
 }
 

@@ -11,6 +11,7 @@
   <text key="NO">No</text>
   <text key="ACTION_IRREVERSIBLE">This action cannot be undone</text>
   <text key="HUNT_TITLE">Good luck !</text>
+  <text key="NO_POKEMON">Unknown Pokemon</text>
 
   <!-- Form Hunt -->
   <text key="FORM_HUNT_TITLE">Let's start !</text>
@@ -23,4 +24,6 @@
   <!-- List -->
   <text key="TITLE_LIST">Shiny Counter</text>
   <text key="ADD_LIST">Add</text>
+  <text key="ABOUT">About</text>
+  <text key="SETTINGS">Settings</text>
 </Language>

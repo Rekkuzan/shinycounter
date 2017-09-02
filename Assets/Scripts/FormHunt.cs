@@ -115,7 +115,7 @@ public class FormHunt : MonoBehaviour {
         else
             stat = DataPkm.ShinyRatesGeneral["AFTER_6G"];
 
-        if (ShinyCharm)
+        if (ShinyCharm && GameVersionDD.value > (int)DataPkm.GameVersion.HEARTGOLD_SOULSILVER)
             stat *= DataPkm.ShinyCharmMultiplier;
 
         if (CurrentMethod == DataPkm.HuntingMode.HORDE)

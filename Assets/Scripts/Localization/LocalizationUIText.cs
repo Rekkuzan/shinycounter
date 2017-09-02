@@ -6,7 +6,7 @@ public class LocalizationUIText : MonoBehaviour
 {
     public string key;
 
-    void Start()
+    void Awake()
     {
         // Get the string value from localization manager from key & set text component text value to the returned string value
         GetComponent<Text>().text = LocalizationManager.Instance.GetText(key);
